@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝓣𝓾𝓵𝓲𝓸'𝓼 𝓜𝓮𝓷𝓾</title>
+    <style>
+        :root {
+            --bg-color: #FFF5F5;
+            --text-color: #5A3E3E;
+            --accent: #FF8FAB;
+            --highlight: #FF2D75;
+            --card-bg: rgba(255, 255, 255, 0.9);
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0 auto;
+            background-image: url('images/tulip.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        .menu-container {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.2em;
+            margin: 10px 0 5px;
+            color: var(--highlight);
+            font-weight: normal;
+        }
+        
+        .subtitle {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent), transparent);
+            border: none;
+            margin: 20px 0;
+        }
+        
+        .menu-section {
+            margin-bottom: 25px;
+        }
+        
+        .menu-title {
+            font-size: 1.3em;
+            color: var(--highlight);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu-title::before, .menu-title::after {
+            content: "◦";
+            margin: 0 8px;
+            color: var(--accent);
+        }
+        
+        .menu-item {
+            background-color: rgba(255, 143, 171, 0.1);
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+        
+        .price-tag {
+            float: right;
+            color: var(--highlight);
+            font-weight: bold;
+        }
+        
+        .button {
+            display: block;
+            background-color: var(--accent);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 20px 0;
+            transition: all 0.3s;
+        }
+        
+        .button:hover {
+            background-color: var(--highlight);
+            transform: translateY(-2px);
+        }
+        
+        .warning {
+            background-color: rgba(255, 45, 117, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px dashed var(--highlight);
+        }
+        
+        .status {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--highlight);
+            margin-right: 8px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.7; }
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            margin: 3px;
+            font-size: 0.8em;
+            transition: all 0.2s;
+        }
+        
+        .tag:hover {
+            transform: rotate(-5deg) scale(1.1);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8em;
+            opacity: 0.8;
+        }
+        
+        .cursor {
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .typing-effect {
+            border-right: 2px solid var(--highlight);
+            padding-right: 5px;
+        }
+        
+        .friend-criteria {
+            background-color: rgba(143, 255, 171, 0.2);
+            border-left: 3px solid #8FFFA8;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        
+        /* Heart frame for first image */
+        .heart-frame {
+            width: 150px;
+            height: 150px;
+            margin: 10px auto;
+            overflow: hidden;
+            border: none;
+            position: relative;
+        }
+        
+        .heart-frame::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="none" stroke="%23FF8FAB" stroke-width="3" d="M50,30 C40,10 10,15 20,40 C30,65 50,80 50,80 C50,80 70,65 80,40 C90,15 60,10 50,30 Z"/></svg>') center/contain no-repeat;
+            pointer-events: none;
+        }
+        
+        .heart-frame img {
+            width: 80%;
+            height: 80%;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 10%;
+            transition: all 0.3s;
+        }
+        
+        .heart-frame:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Linked image with text */
+        .linked-pic-container {
+            margin: 20px auto;
+            width: 200px;
+            position: relative;
+        }
+        
+        .linked-pic {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .linked-pic img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            filter: brightness(0.9);
+            transition: all 0.3s;
+        }
+        
+        .linked-pic:hover img {
+            transform: scale(1.05);
+            filter: brightness(0.7) blur(1px);
+        }
+        
+        .pic-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 143, 171, 0.8);
+            color: white;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            transform: translateY(100%);
+            transition: all 0.3s;
+        }
+        
+        .linked-pic:hover .pic-label {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="header">
+            <h1>𝓣𝓾𝓵𝓲𝓸'𝓼 𝓜𝓮𝓷𝓾</h1>
+            <div class="subtitle">Moon Tulio • roleplay • 19 • he/him</div>
+            
+            <div class="menu-item">
+                <span class="status"></span>
+                Active sporadically - replies may be slow
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="menu-section">
+            <div class="menu-title">place order</div>
+            
+            <!-- Heart frame image -->
+            <div class="heart-frame">
+                <img src="images/sillysoob.jpg" alt="Tulio waiting for your order">
+            </div>
+            
+            <div class="menu-item typing-effect" id="typing-text"></div>
+        </div>
+        
+        <div class="menu-section">
+            <div class="menu-title">a. likes?</div>
+            <div class="menu-item">
+                kpop, sleeping, dancing, crafts, tiktok lol, cafe, memes, food, soobin
+                <span class="price-tag">$10 </span>
+            </div>
+            <a href="#" class="button">buy my attention now</a>
+        </div>
+        
+        <div class="menu-section">
+            <div class="menu-title">dislikes %</div>
+            <div class="menu-item">
+                rude people, boundary pushers, tomatoes, being woken up early, clara ♡
+            </div>
+        </div>
+        
+        <div class="menu-section">
+            <div class="menu-title">b4u interact!</div>
+            <div class="warning">
+                • I'm only active for short periods<br>
+                • Don't expect quick replies<br>
+                • MDNI <br>
+                • DNIR (im not looking for anyone) <br>
+                • I swear sometimes and make dark jokes<br>
+                • I spam when excited about things!
+            </div>
+        </div>
+        
+        <div class="menu-section">
+            <div class="menu-title">don't interact</div>
+            <div class="menu-item">
+                <span class="tag">takes krp too seriously</span>
+                <span class="tag">dry/rude</span>
+                <span class="tag">bitches for no reason</span>
+                <span class="tag">homophobic</span>
+                <span class="tag">racist</span>
+                <span class="tag">toxic</span>
+                <span class="tag">fan wars</span>
+                <span class="tag">judgemental</span>
+            </div>
+        </div>
+        
+        <div class="menu-section">
+            <div class="menu-title">friend material?</div>
+            <div class="friend-criteria">
+                • yaps a lot <br>
+                • actually cool and funny<br>
+                • considers me a real friend<br>
+                • doesn't take everything so seriously<br>
+                • matches my chaotic energy
+            </div>
+        </div>
+        
+        <!-- Linked image with "click me" text -->
+        <div class="linked-pic-container">
+            <a href="https://tellonym.me/czxjae" target="_blank" class="linked-pic">
+                <img src="images/hao2.jpg" alt="Message Tulio">
+                <div class="pic-label">Click me to send a message </div>
+            </a>
+        </div>
+        
+        <a href="#" class="button">click to go back 2 home pane</a>
+        
+        <footer>
+            zhanghao roleplay • not affiliated with zb1 <br>
+            >-<
+        </footer>
+    </div>
+
+    <script>
+        // Typing effect
+        const text = "what would you like ?";
+        const typingElement = document.getElementById('typing-text');
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < text.length) {
+                typingElement.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                typingElement.classList.add('cursor');
+            }
+        }
+        
+        // Start typing effect after page loads
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 500);
+            
+            // Animate tags one by one
+            const tags = document.querySelectorAll('.tag');
+            tags.forEach((tag, index) => {
+                setTimeout(() => {
+                    tag.style.transform = 'rotate(-5deg)';
+                    setTimeout(() => {
+                        tag.style.transform = 'rotate(0)';
+                    }, 200);
+                }, index * 100);
+            });
+        });
+        
+        // Make tags interactive
+        document.querySelectorAll('.tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                tag.style.animation = 'none';
+                void tag.offsetWidth; // Trigger reflow
+                tag.style.animation = 'shake 0.5s';
+                
+                // Temporary color change
+                tag.style.backgroundColor = '#FF2D75';
+                setTimeout(() => {
+                    tag.style.backgroundColor = '';
+                }, 500);
+            });
+        });
+        
+        // Add shake animation for tags
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20% { transform: translateX(-5px); }
+                40% { transform: translateX(5px); }
+                60% { transform: translateX(-5px); }
+                80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
